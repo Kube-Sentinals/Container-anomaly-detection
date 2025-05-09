@@ -1,0 +1,69 @@
+# AWS Configuration
+aws:
+  region: us-west-2
+  s3:
+    bucket: your-bucket-name
+  iam:
+    role_arn: vault://aws/iam/role-arn
+  sns:
+    topic_arn: vault://aws/sns/topic-arn
+
+# Splunk Configuration
+splunk:
+  host: vault://splunk/host
+  port: 8089
+  username: vault://splunk/username
+  password: vault://splunk/password
+  index: container_metrics
+  search_timeout: 300
+
+# Model Configuration
+model:
+  name: container-anomaly-detector
+  version: 1.0.0
+  parameters:
+    contamination: 0.1
+    n_estimators: 100
+    random_state: 42
+  training:
+    batch_size: 32
+    epochs: 100
+    validation_split: 0.2
+  deployment:
+    instance_type: ml.t2.medium
+    initial_instance_count: 1
+
+# Lambda Configuration
+lambda:
+  function_name: container-anomaly-detector
+  timeout: 300
+  memory_size: 256
+  runtime: python3.8
+  handler: lambda_function.lambda_handler
+  schedule: rate(5 minutes)
+
+# Monitoring Configuration
+monitoring:
+  metrics:
+    - cpu_usage
+    - memory_usage
+    - disk_usage
+    - network_io
+  thresholds:
+    cpu_warning: 80
+    cpu_critical: 90
+    memory_warning: 85
+    memory_critical: 95
+  alert_channels:
+    - sns
+    - email
+
+# Dynatrace Configuration
+dynatrace:
+  api_token: vault://dynatrace/api-token
+  environment_id: vault://dynatrace/environment-id
+  metrics:
+    - container.cpu
+    - container.memory
+    - container.disk
+    - container.network 

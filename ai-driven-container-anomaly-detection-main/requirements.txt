@@ -1,0 +1,17 @@
+boto3>=1.26.0
+pandas>=1.5.0
+numpy>=1.21.0
+scikit-learn>=1.0.0
+splunk-sdk>=1.6.0
+dynatrace-api-client>=1.0.0
+python-dotenv>=0.19.0
+pytest>=7.0.0
+black>=22.0.0
+flake8>=4.0.0
+mypy>=0.950
+hvac>=1.0.0  # HashiCorp Vault client
+pyyaml>=6.0.0  # YAML configuration
+structlog>=23.1.0  # Structured logging
+tenacity>=8.2.0  # Retry logic
+pydantic>=2.0.0  # Data validation
+prometheus-client>=0.17.0  # Metrics collection 
